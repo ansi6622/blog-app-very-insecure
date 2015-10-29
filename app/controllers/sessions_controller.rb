@@ -8,13 +8,14 @@ class SessionsController < ApplicationController
   def attempt_login
     if params[:email].present? && params[:password].present?
       found_user = User.where(email: params[:email]).first
-      if found_user and found_user.password == params[:password]
-        login_user(found_user)
-        redirect_to root_path
-      else
-        redirect_to root_path
+      if found_user
+        authenticated_user = found_user.authenticate(params[:password])
+        if authenticated_user
+          login_user(authenticated_user)
+        end
       end
     end
+    redirect_to root_path
   end
 
   def logout

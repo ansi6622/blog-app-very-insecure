@@ -24,15 +24,6 @@ class ApplicationController < ActionController::Base
   def login_user(user)
     if user.persisted?
       session[:user_id] = user.id
-      session[:password] = user.password
-    end
-  end
-
-  def authenticate(user, password)
-    if password.eql?(user.password)
-      true
-    else
-      false
     end
   end
 
