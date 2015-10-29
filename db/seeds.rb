@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 tim = User.create(email: "tim@testing.com", password: "testing", admin: true)
-admin = User.create(email: "admin@testing.com", password: "aa", admin: true)
+admin = User.create(email: "admin@testing.com", password: "ca", admin: true)
 matty = User.create(email: "matty@testing.com", password: "testing")
 eric = User.create(email: "eric@testing.com", password: "testing")
 lisa = User.create(email: "lisa@testing.com", password: "testing")
