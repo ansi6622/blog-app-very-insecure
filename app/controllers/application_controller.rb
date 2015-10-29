@@ -36,5 +36,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def confirm_admin
+    unless current_user && current_user.admin?
+      redirect_to root_path
+    end
+  end
+
   helper_method :current_user
 end

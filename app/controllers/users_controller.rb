@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :confirm_logged_in, except: [:create, :new]
+  before_action :confirm_admin, except: [:create, :new]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
