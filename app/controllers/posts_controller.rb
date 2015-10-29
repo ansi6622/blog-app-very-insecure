@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   end
 
   def recent
-    @posts = Post.order(created_at: :desc).limit(5)
+    @posts = Post.where(public: true).includes(:user).order(created_at: :desc).limit(10)
   end
 
   def search
