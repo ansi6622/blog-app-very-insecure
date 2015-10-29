@@ -28,11 +28,12 @@ class PostsController < ApplicationController
   end
 
   def search
-    # http://localhost:3000/posts/search?search_term=t%25%27%3Bselect%20*%20from%20users%3B%20--
+    # http://localhost:3000/posts/search?search_term=AC%25%27+OR+content%3A%3ATEXT+like+%27%25a
+    term = "%#{params[:search_term]}%"
     if current_user.admin?
-      @search_results = Post.where("posts.content::text LIKE '%#{params[:search_term]}%'")
+      @search_results = Post.where("posts.content::text LIKE ?", term)
     else
-      @search_results = Post.where("posts.content::text LIKE '%#{params[:search_term]}%' AND posts.public=true")
+      @search_results = Post.where("posts.content::text LIKE ? AND posts.public=true", term)
     end
   end
 
