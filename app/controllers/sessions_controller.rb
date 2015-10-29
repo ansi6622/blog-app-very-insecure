@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :confirm_logged_in, only: [:logout]
+
 
   def login
   end
